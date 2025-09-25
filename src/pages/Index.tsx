@@ -4,6 +4,7 @@ import { CategoryGrid } from "@/components/marketplace/category-grid";
 import { ProductCard } from "@/components/marketplace/product-card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Truck, MessageCircle, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Mock product data
 const featuredProducts = [
@@ -55,6 +56,7 @@ const featuredProducts = [
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -71,7 +73,7 @@ const Index = () => {
                 Hand-picked deals from trusted sellers
               </p>
             </div>
-            <Button variant="outline" className="hidden sm:flex">
+            <Button variant="outline" className="hidden sm:flex" onClick={() => navigate('/search')}>
               View All
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -155,10 +157,10 @@ const Index = () => {
             Join our community of buyers and sellers today. List your first item for free!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8" onClick={() => navigate('/profile')}>
               Start Selling Now
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8" onClick={() => navigate('/search')}>
               Browse Items
             </Button>
           </div>

@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { 
   Smartphone, 
   Laptop, 
@@ -30,6 +31,7 @@ const categories = [
 ];
 
 export function CategoryGrid() {
+  const navigate = useNavigate();
   return (
     <section className="py-16 px-4">
       <div className="container mx-auto">
@@ -47,6 +49,7 @@ export function CategoryGrid() {
               <Card 
                 key={index} 
                 className="group cursor-pointer transition-smooth hover:shadow-medium hover:-translate-y-1 bg-card-gradient border-0"
+                onClick={() => navigate(`/category/${category.name.toLowerCase().replace(/[^a-z0-9]/g, '')}`)}
               >
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">

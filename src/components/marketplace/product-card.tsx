@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { Heart, Star, MapPin, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
@@ -35,6 +36,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
   
   const getConditionColor = (condition: string) => {
     switch (condition) {
@@ -48,7 +50,10 @@ export function ProductCard({
   };
 
   return (
-    <Card className="group cursor-pointer transition-smooth hover:shadow-medium hover:-translate-y-1 bg-card-gradient border-0 overflow-hidden">
+    <Card 
+      className="group cursor-pointer transition-smooth hover:shadow-medium hover:-translate-y-1 bg-card-gradient border-0 overflow-hidden"
+      onClick={() => navigate(`/product/${id}`)}
+    >
       {isFeatured && (
         <div className="bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 text-center">
           FEATURED
@@ -147,7 +152,10 @@ export function ProductCard({
           <Button 
             size="sm" 
             className="flex-1 bg-hero-gradient hover:opacity-90"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/product/${id}`);
+            }}
           >
             View Details
           </Button>

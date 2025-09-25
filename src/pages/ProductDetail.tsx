@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "@/components/marketplace/header";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [isFavorited, setIsFavorited] = useState(false);
   
@@ -79,7 +81,7 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-6">
-          <Button variant="ghost" size="sm" className="p-0 h-auto">
+          <Button variant="ghost" size="sm" className="p-0 h-auto" onClick={() => navigate(-1)}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to results
           </Button>
@@ -223,7 +225,7 @@ const ProductDetail = () => {
                     <p className="text-sm text-muted-foreground mb-4">
                       {product.seller.responseTime}
                     </p>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={() => navigate('/profile')}>
                       View Profile
                     </Button>
                   </div>

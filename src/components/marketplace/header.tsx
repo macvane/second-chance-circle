@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import { 
   Bell, 
   MessageCircle, 
@@ -20,6 +21,7 @@ import {
 import { SearchBar } from "@/components/ui/search-bar";
 
 export function Header() {
+  const navigate = useNavigate();
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-soft">
       <div className="container mx-auto px-4">
@@ -35,10 +37,10 @@ export function Header() {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => navigate('/auth')}>
               Sign In
             </Button>
-            <Button size="sm" className="bg-hero-gradient hover:opacity-90">
+            <Button size="sm" className="bg-hero-gradient hover:opacity-90" onClick={() => navigate('/auth')}>
               Sign Up
             </Button>
           </div>
@@ -47,18 +49,18 @@ export function Header() {
         {/* Main navigation */}
         <div className="flex items-center justify-between py-4">
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-foreground hover:text-primary transition-smooth font-medium">
+            <button onClick={() => navigate('/')} className="text-foreground hover:text-primary transition-smooth font-medium">
               Home
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
+            </button>
+            <button onClick={() => navigate('/search')} className="text-muted-foreground hover:text-primary transition-smooth">
               Browse
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
+            </button>
+            <button onClick={() => navigate('/category/electronics')} className="text-muted-foreground hover:text-primary transition-smooth">
               Categories
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-smooth">
+            </button>
+            <button onClick={() => navigate('/search?featured=true')} className="text-muted-foreground hover:text-primary transition-smooth">
               Deals
-            </a>
+            </button>
           </nav>
 
           <div className="flex-1 max-w-2xl mx-8">
@@ -66,7 +68,7 @@ export function Header() {
           </div>
 
           <div className="flex items-center space-x-3">
-            <Button variant="outline" size="sm" className="hidden sm:flex">
+            <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => navigate('/profile')}>
               <PlusCircle className="h-4 w-4 mr-2" />
               Sell Item
             </Button>
@@ -93,15 +95,15 @@ export function Header() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/profile')}>
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/profile')}>
                     <ShoppingBag className="mr-2 h-4 w-4" />
                     My Listings
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/profile')}>
                     <Heart className="mr-2 h-4 w-4" />
                     Favorites
                   </DropdownMenuItem>

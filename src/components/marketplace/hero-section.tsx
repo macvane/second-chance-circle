@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import { SearchBar } from "@/components/ui/search-bar";
 import { TrendingUp, Users, Shield, Zap } from "lucide-react";
 import heroImage from "@/assets/hero-marketplace.jpg";
 
 export function HeroSection() {
+  const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-hero-gradient">
       {/* Background overlay */}
@@ -52,6 +54,7 @@ export function HeroSection() {
             <Button 
               size="lg" 
               className="bg-white text-primary hover:bg-white/90 shadow-strong px-8 py-6 text-lg font-semibold rounded-full"
+              onClick={() => navigate('/search')}
             >
               Start Shopping
             </Button>
@@ -59,6 +62,7 @@ export function HeroSection() {
               variant="outline" 
               size="lg" 
               className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full"
+              onClick={() => navigate('/profile')}
             >
               Sell Your Items
             </Button>
